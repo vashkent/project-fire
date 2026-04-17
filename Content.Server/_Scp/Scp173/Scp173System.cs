@@ -63,6 +63,8 @@ public sealed partial class Scp173System : SharedScp173System
 
     private TimeSpan _nextReagentCheck;
 
+    private EntityQuery<SubFloorHideComponent> _subFloorQuery;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -70,6 +72,7 @@ public sealed partial class Scp173System : SharedScp173System
         SubscribeLocalEvent<Scp173Component, Scp173DamageStructureAction>(OnStructureDamage);
         SubscribeLocalEvent<Scp173Component, Scp173ClogAction>(OnClog);
         SubscribeLocalEvent<Scp173Component, Scp173FastMovementAction>(OnFastMovement);
+        _subFloorQuery = GetEntityQuery<SubFloorHideComponent>();
     }
 
     public override void Update(float frameTime)
@@ -133,8 +136,7 @@ public sealed partial class Scp173System : SharedScp173System
         foreach (var ent in lookup)
         {
             // Проверяем, скрыта ли труба под плиткой
-            var isUnderCover = TryComp<SubFloorHideComponent>(ent, out var subFloor) && subFloor.IsUnderCover;
-            if (isUnderCover)
+            if (_subFloorQuery.TryComp(ent, out var subFloor) && subFloor.IsUnderCover && subFloor.BlockInteractions)
                 continue; // Не ломаем то, что под полом
 
             // Наносим случайным вещам структурный дамаг
