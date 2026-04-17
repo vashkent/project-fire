@@ -26,6 +26,7 @@ using Content.Shared.Lock;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Storage.Components;
+using Content.Shared.SubFloor;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
@@ -131,6 +132,11 @@ public sealed partial class Scp173System : SharedScp173System
 
         foreach (var ent in lookup)
         {
+            // Проверяем, скрыта ли труба под плиткой
+            var isUnderCover = TryComp<SubFloorHideComponent>(ent, out var subFloor) && subFloor.IsUnderCover;
+            if (isUnderCover)
+                continue; // Не ломаем то, что под полом
+
             // Наносим случайным вещам структурный дамаг
             var dspec = new DamageSpecifier();
             var damageValue = _random.Next(20, 80);
