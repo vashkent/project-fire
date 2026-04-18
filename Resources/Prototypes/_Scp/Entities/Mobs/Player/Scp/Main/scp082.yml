@@ -57,7 +57,6 @@
     baseSprintSpeed: 2.5 # TO DO: добиться изменения его скорости до указанных значений, на данный момент при спавне ему задается значение 4.5 и меняется из-за Fixtures
   - type: ScpRestriction
     canPull: true
-    canCarry: true
   - type: Pullable
   - type: Puller
     needsHands: true
@@ -74,8 +73,8 @@
   - type: MeleeWeapon
     hidden: true
     altDisarm: false
-    animation: WeaponArcPunch
-    wideAnimation: WeaponArcPunch
+    animation: WeaponArcSmash
+    wideAnimation: WeaponArcSmash
     soundHit:
       collection: Punch
     damage:
