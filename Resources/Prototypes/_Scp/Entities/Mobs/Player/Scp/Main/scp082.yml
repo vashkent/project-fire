@@ -52,8 +52,8 @@
       enum.StoreUiKey.Key:
         type: StoreBoundUserInterface
   - type: MovementSpeedModifier
-    baseWalkSpeed: 1.5 # TO DO: добиться изменения его скорости до указанных значений, на данный момент при спавне ему задается значение 2.5 и меняется из-за Fixtures
-    baseSprintSpeed: 2.5 # TO DO: добиться изменения его скорости до указанных значений, на данный момент при спавне ему задается значение 4.5 и меняется из-за Fixtures
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 2.5
   - type: ScpRestriction
     canPull: true
   - type: Pullable
