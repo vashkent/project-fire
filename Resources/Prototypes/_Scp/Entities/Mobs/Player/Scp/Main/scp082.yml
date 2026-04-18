@@ -29,7 +29,6 @@
       10000: Dead
   - type: Body
     prototype: Human
-    requiredLegs: 2
   - type: Inventory
     templateId: scp082
   - type: FieldOfView
