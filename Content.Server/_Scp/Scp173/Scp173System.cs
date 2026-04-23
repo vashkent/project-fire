@@ -121,7 +121,7 @@ public sealed partial class Scp173System : SharedScp173System
             return;
         }
 
-        var lookup = _lookup.GetEntitiesInRange(uid, 4f, LookupFlags.Static)
+        var lookup = _lookup.GetEntitiesInRange(uid, 4f)
             .Where(ent => _interaction.InRangeUnobstructed(uid.Owner, ent, ExamineSystemShared.ExamineRange));
 
         var entityStorage = GetEntityQuery<EntityStorageComponent>();
@@ -132,11 +132,6 @@ public sealed partial class Scp173System : SharedScp173System
 
         foreach (var ent in lookup)
         {
-            // Проверяем, скрыта ли труба под плиткой
-            var isUnderCover = TryComp<SubFloorHideComponent>(ent, out var subFloor) && subFloor.IsUnderCover;
-            if (isUnderCover)
-                continue; // Не ломаем то, что под полом
-
             // Наносим случайным вещам структурный дамаг
             var dspec = new DamageSpecifier();
             var damageValue = _random.Next(20, 80);
