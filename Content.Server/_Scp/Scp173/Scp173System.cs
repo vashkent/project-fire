@@ -26,7 +26,6 @@ using Content.Shared.Lock;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Storage.Components;
-using Content.Shared.SubFloor;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
